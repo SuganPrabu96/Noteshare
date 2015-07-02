@@ -1,7 +1,7 @@
 package NavigationDrawer;
 
 /**
- * Created by Arvind on 26-01-2015.
+ * Created by SuganPrabu on 02-07-2015.
  */
 public class NavDrawerItem {
 

@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.facebook.widget.ProfilePictureView;
+import com.readystatesoftware.viewbadger.BadgeView;
 
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView profileIconText;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
-    private DrawerLayout drawerLayout;
+    private static DrawerLayout drawerLayout;
     private ListView drawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavDrawerListAdapter navDrawerListAdapter;
@@ -117,13 +119,9 @@ public class MainActivity extends ActionBarActivity {
             }
         };
         drawerLayout.setDrawerListener(mDrawerToggle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.ic_drawer);
         mDrawerToggle.syncState();
 
         navDrawerListAdapter.setSelectedItem(0);
-
 
         /*btnTakePhoto = (Button) findViewById(R.id.button_new_photo);
         btnChooseExisting = (Button) findViewById(R.id.button_file_browser);
@@ -141,6 +139,10 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(MainActivity.this,FileBrowser.class));
             }
         });*/
+    }
+
+    private static void openDrawer(){
+        drawerLayout.openDrawer(Gravity.LEFT);
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -228,12 +230,29 @@ public class MainActivity extends ActionBarActivity {
         public MyProfileFragment() {
         }
 
+        private ImageView drawer, notifBell;
+        private BadgeView badge;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_my_profile, container, false);
 
+            drawer = (ImageView) rootView.findViewById(R.id.ic_drawer);
+            notifBell = (ImageView) rootView.findViewById(R.id.my_page_notif);
+            badge = new BadgeView(rootView.getContext(), notifBell);
+
+            badge.setText("1");
+            badge.setBadgePosition(badge.POSITION_TOP_RIGHT);
+            badge.show();
+
+            drawer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.openDrawer();
+                    Log.d("Clicked", "True");
+                }
+            });
 
             return rootView;
         }
