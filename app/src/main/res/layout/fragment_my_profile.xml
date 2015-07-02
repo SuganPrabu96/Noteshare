@@ -17,31 +17,39 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
        >
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <ImageView
         android:layout_width="40dp"
         android:layout_height="30dp"
         android:src="@drawable/ic_drawer"
         android:scaleType="fitXY"
-        android:id="@+id/ic_drawer"/>
+        android:id="@+id/ic_drawer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/my_profile_pro_pic"
-                android:src="@drawable/ic_launcher"/>
+                android:src="@drawable/logo"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text=""
-                android:textColor="#000"
+                android:text="Sugan"
+                android:textColor="#fff"
                 android:textSize="17sp"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -51,8 +59,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text=""
-                android:textColor="#000"
+                android:text="IIT Madras"
+                android:textColor="#fff"
                 android:textSize="17sp"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -61,11 +69,17 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/bell"
             android:scaleType="fitXY"
+            android:layout_alignParentRight="true"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:layout_alignParentTop="true"
             android:id="@+id/my_page_notif"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -92,12 +106,14 @@
                 android:text=""
                 android:textSize="18sp"
                 android:textColor="#fff"
+                android:lines="1"
                 android:id="@+id/my_page_uploads_count"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Uploads"
+                android:lines="1"
                 android:textSize="18sp"
                 android:textColor="#fff"/>
 
@@ -114,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="18sp"
+                android:lines="1"
                 android:textColor="#fff"
                 android:id="@+id/my_page_downloads_count"/>
 
@@ -121,6 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Downloads"
+                android:lines="1"
                 android:textSize="18sp"
                 android:textColor="#fff"/>
 
@@ -137,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="18sp"
+                android:lines="1"
                 android:textColor="#fff"
                 android:id="@+id/my_page_credits_count"/>
 
@@ -145,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:text="Credits"
                 android:textSize="18sp"
+                android:lines="1"
                 android:textColor="#fff"/>
 
         </LinearLayout>
@@ -161,6 +181,7 @@
                 android:text=""
                 android:textSize="18sp"
                 android:textColor="#fff"
+                android:lines="1"
                 android:id="@+id/my_page_followers_count"/>
 
             <TextView
@@ -168,6 +189,7 @@
                 android:layout_height="wrap_content"
                 android:text="Followers"
                 android:textSize="18sp"
+                android:lines="1"
                 android:textColor="#fff"/>
 
         </LinearLayout>
@@ -184,6 +206,7 @@
                 android:text=""
                 android:textSize="18sp"
                 android:textColor="#fff"
+                android:lines="1"
                 android:id="@+id/my_page_following_count"/>
 
             <TextView
@@ -191,6 +214,7 @@
                 android:layout_height="wrap_content"
                 android:text="Following"
                 android:textSize="18sp"
+                android:lines="1"
                 android:textColor="#fff"/>
 
         </LinearLayout>
@@ -202,8 +226,162 @@
         android:layout_height="1dp"
         android:background="#fff"/>
 
-<!--
-    <include layout="@layout/search_notes_layout"/>
--->
+    <include
+        layout="@layout/search_notes_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="34dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:text="Department"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="20dp"/>
+
+            </RelativeLayout>
+
+            </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:text="College"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload and Earn credits"
+            android:layout_gravity="center"
+            android:textColor="#000"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/gift"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <include
+        layout="@layout/activity_main_footer"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+        </RelativeLayout>
 
 </LinearLayout>

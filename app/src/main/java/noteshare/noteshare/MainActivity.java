@@ -231,6 +231,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         private ImageView drawer, notifBell;
+        private TextView uploadsTV, downloadsTV, creditsTV, followersTV, followingTV;
         private BadgeView badge;
 
         @Override
