@@ -97,14 +97,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1.03">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="18sp"
+                android:text="0"
+                android:textSize="17sp"
                 android:textColor="#fff"
+                android:gravity="center"
                 android:lines="1"
                 android:id="@+id/my_page_uploads_count"/>
 
@@ -112,8 +114,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Uploads"
+                android:gravity="center"
                 android:lines="1"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textColor="#fff"/>
 
         </LinearLayout>
@@ -122,14 +125,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="0.95">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="18sp"
+                android:text="0"
+                android:textSize="17sp"
                 android:lines="1"
+                android:gravity="center"
                 android:textColor="#fff"
                 android:id="@+id/my_page_downloads_count"/>
 
@@ -138,7 +142,8 @@
                 android:layout_height="wrap_content"
                 android:text="Downloads"
                 android:lines="1"
-                android:textSize="18sp"
+                android:gravity="center"
+                android:textSize="17sp"
                 android:textColor="#fff"/>
 
         </LinearLayout>
@@ -147,14 +152,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1.06">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="18sp"
+                android:text="0"
+                android:textSize="17sp"
                 android:lines="1"
+                android:gravity="center"
                 android:textColor="#fff"
                 android:id="@+id/my_page_credits_count"/>
 
@@ -162,7 +168,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Credits"
-                android:textSize="18sp"
+                android:textSize="17sp"
+                android:gravity="center"
                 android:lines="1"
                 android:textColor="#fff"/>
 
@@ -172,14 +179,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="0.98">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="18sp"
+                android:text="0"
+                android:textSize="17sp"
                 android:textColor="#fff"
+                android:gravity="center"
                 android:lines="1"
                 android:id="@+id/my_page_followers_count"/>
 
@@ -187,7 +195,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Followers"
-                android:textSize="18sp"
+                android:textSize="17sp"
+                android:gravity="center"
                 android:lines="1"
                 android:textColor="#fff"/>
 
@@ -197,14 +206,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="0.98">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="18sp"
+                android:text="0"
+                android:textSize="17sp"
                 android:textColor="#fff"
+                android:gravity="center"
                 android:lines="1"
                 android:id="@+id/my_page_following_count"/>
 
@@ -212,7 +222,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Following"
-                android:textSize="18sp"
+                android:textSize="17sp"
+                android:gravity="center"
                 android:lines="1"
                 android:textColor="#fff"/>
 
