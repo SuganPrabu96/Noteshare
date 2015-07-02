@@ -2,6 +2,7 @@ package noteshare.noteshare;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -230,8 +231,8 @@ public class MainActivity extends ActionBarActivity {
         public MyProfileFragment() {
         }
 
-        private ImageView drawer, notifBell;
-        private TextView uploadsTV, downloadsTV, creditsTV, followersTV, followingTV;
+        private ImageView drawerIV, notifBellIV, cameraIV, uploadFileIV;
+        private TextView uploadsTV, downloadsTV, creditsTV, followersTV, followingTV, takePicTV, uploadFileTV;
         private BadgeView badge;
 
         @Override
@@ -239,15 +240,27 @@ public class MainActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_my_profile, container, false);
 
-            drawer = (ImageView) rootView.findViewById(R.id.ic_drawer);
-            notifBell = (ImageView) rootView.findViewById(R.id.my_page_notif);
-            badge = new BadgeView(rootView.getContext(), notifBell);
+            drawerIV = (ImageView) rootView.findViewById(R.id.ic_drawer);
+            notifBellIV = (ImageView) rootView.findViewById(R.id.my_page_notif);
+            cameraIV = (ImageView) rootView.findViewById(R.id.main_footer_camera);
+            uploadFileIV = (ImageView) rootView.findViewById(R.id.main_footer_upload);
+            uploadsTV = (TextView) rootView.findViewById(R.id.my_page_uploads_count);
+            downloadsTV = (TextView) rootView.findViewById(R.id.my_page_downloads_count);
+            creditsTV = (TextView) rootView.findViewById(R.id.my_page_credits_count);
+            followersTV = (TextView) rootView.findViewById(R.id.my_page_followers_count);
+            followingTV = (TextView) rootView.findViewById(R.id.my_page_following_count);
+            takePicTV = (TextView) rootView.findViewById(R.id.main_footer_take_pic);
+            uploadFileTV = (TextView) rootView.findViewById(R.id.main_footer_upload_existing);
+            badge = new BadgeView(rootView.getContext(), notifBellIV);
+
+            takePicTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            uploadFileTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
             badge.setText("1");
             badge.setBadgePosition(badge.POSITION_TOP_RIGHT);
             badge.show();
 
-            drawer.setOnClickListener(new View.OnClickListener() {
+            drawerIV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     MainActivity.openDrawer();
