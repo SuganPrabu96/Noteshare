@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="#363535"
+    android:orientation="vertical">
+
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="55dp"
+      android:background="#363535">
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:scaleType="fitXY"
+        android:layout_gravity="left|center"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="0dp"
+       />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
+            android:text="skdj"
+            android:textSize="18sp"
+            android:textColor="#D8D8D8"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_vertical"
+            android:layout_gravity="left|center_vertical" />
+    </FrameLayout>
+  </FrameLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/separator"
+        android:layout_marginTop="0dp"
+        android:background="#868686"/>
+
+</LinearLayout>

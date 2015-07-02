@@ -11,4 +11,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="title_activity_login">Noteshare</string>
+    <string name="title_activity_my_profile">MyProfile</string>
+    <string name="title_activity_my_uploads">MyUploads</string>
+    <string name="title_activity_my_downloads">MyDownloads</string>
 </resources>

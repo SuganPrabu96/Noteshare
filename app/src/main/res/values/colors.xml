@@ -1,5 +1,10 @@
 <resources>
 
     <color name="black_overlay">#66000000</color>
+    <color name="myNavigationBarProPicBackgroundColor">#4caf50</color>
+    <color name="NavigationBarSelectedItem">#ffffff</color>
+    <color name="NavigationBarUnselectedItem">#848484</color>
+    <color name="NavigationBarSelectedItemText">#fff</color>
+    <color name="NavigationBarUnselectedItemText">#D8D8D8</color>
 
 </resources>
