@@ -1,7 +1,9 @@
 package noteshare.noteshare;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,7 +38,6 @@ import util.data;
 
 public class MainActivity extends ActionBarActivity {
 
-    //private Button btnTakePhoto, btnChooseExisting;
     private ProfilePictureView facebookProfileIcon;
     private CircleImageView googleProfileIcon;
     private ImageView profileIcon;
@@ -124,22 +125,6 @@ public class MainActivity extends ActionBarActivity {
 
         navDrawerListAdapter.setSelectedItem(0);
 
-        /*btnTakePhoto = (Button) findViewById(R.id.button_new_photo);
-        btnChooseExisting = (Button) findViewById(R.id.button_file_browser);
-
-        btnTakePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TakePhoto.class));
-            }
-        });
-
-        btnChooseExisting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,FileBrowser.class));
-            }
-        });*/
     }
 
     private static void openDrawer(){
@@ -268,7 +253,45 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
 
+            takePicTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            cameraIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
             return rootView;
+        }
+
+        private void callTakePhotoActivity(Context context){
+            Intent intent = new Intent(context, TakePhoto.class);
+            startActivity(intent);
+        }
+
+        private void callFileBrowserActivity(Context context){
+            Intent intent = new Intent(context, FileBrowser.class);
+            startActivity(intent);
         }
 
     }
