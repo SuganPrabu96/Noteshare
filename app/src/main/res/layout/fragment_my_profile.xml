@@ -41,6 +41,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/my_profile_pro_pic"
+                android:layout_gravity="center"
                 android:src="@drawable/logo"/>
 
             <TextView
@@ -237,7 +238,7 @@
         android:background="#fff"/>
 
     <include
-        layout="@layout/search_notes_layout"
+        layout="@layout/search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -387,7 +388,7 @@
         android:layout_height="wrap_content">
 
     <include
-        layout="@layout/activity_main_footer"
+        layout="@layout/footer_main_1"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"

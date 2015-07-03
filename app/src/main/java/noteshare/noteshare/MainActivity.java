@@ -12,6 +12,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,8 +31,11 @@ import android.widget.TextView;
 import com.facebook.widget.ProfilePictureView;
 import com.readystatesoftware.viewbadger.BadgeView;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import MyDownloads.MyDownloadsItemsClass;
+import MyDownloads.MyDownloadsRecyclerViewAdapter;
 import NavigationDrawer.NavDrawerItem;
 import NavigationDrawer.NavDrawerListAdapter;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -49,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private NavDrawerListAdapter navDrawerListAdapter;
     private String modeOfLogin = "App"; //TODO edit this
+    public static ArrayList<MyDownloadsItemsClass> myDownloads;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,10 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.nav_bar);
 
         getSupportActionBar().hide();
+
+        myDownloads = new ArrayList<>();
+        myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
+        myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
 
         facebookProfileIcon = (ProfilePictureView) findViewById(R.id.profilepic_facebook);
         profileIconText = (TextView) findViewById(R.id.profilepic_name);
@@ -217,7 +228,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         private ImageView drawerIV, notifBellIV, cameraIV, uploadFileIV;
-        private TextView uploadsTV, downloadsTV, creditsTV, followersTV, followingTV, takePicTV, uploadFileTV;
+        private TextView uploadsTV, downloadsTV, creditsTV, followersTV, followingTV, takePicTV, uploadFileTV, searchNotesTV;
         private BadgeView badge;
 
         @Override
@@ -236,10 +247,13 @@ public class MainActivity extends ActionBarActivity {
             followingTV = (TextView) rootView.findViewById(R.id.my_page_following_count);
             takePicTV = (TextView) rootView.findViewById(R.id.main_footer_take_pic);
             uploadFileTV = (TextView) rootView.findViewById(R.id.main_footer_upload_existing);
+            searchNotesTV = (TextView) rootView.findViewById(R.id.search_layout_text);
             badge = new BadgeView(rootView.getContext(), notifBellIV);
 
             takePicTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
             uploadFileTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+            searchNotesTV.setText("Search notes...");
 
             badge.setText("1");
             badge.setBadgePosition(badge.POSITION_TOP_RIGHT);
@@ -318,14 +332,84 @@ public class MainActivity extends ActionBarActivity {
         public MyDownloadsFragment() {
         }
 
+        private TextView searchNotesTV, takePicTV, uploadFileTV;
+        private ImageView drawerIV, cameraIV, uploadFileIV;
+        private RecyclerView myDownloadRV;
+        private MyDownloadsRecyclerViewAdapter adapter;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_my_downloads, container, false);
 
+            drawerIV = (ImageView) rootView.findViewById(R.id.ic_drawer);
+            cameraIV = (ImageView) rootView.findViewById(R.id.main_footer_camera);
+            uploadFileIV = (ImageView) rootView.findViewById(R.id.main_footer_upload);
+            searchNotesTV = (TextView) rootView.findViewById(R.id.search_layout_text);
+            takePicTV = (TextView) rootView.findViewById(R.id.main_footer_take_pic);
+            uploadFileTV = (TextView) rootView.findViewById(R.id.main_footer_upload_existing);
+
+            searchNotesTV.setText("Search notes");
+
+            takePicTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            uploadFileTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+            drawerIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.openDrawer();
+                    Log.d("Clicked", "True");
+                }
+            });
+
+            takePicTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            cameraIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
+            myDownloadRV = (RecyclerView) rootView.findViewById(R.id.my_downloads_recyclerview);
+            myDownloadRV.setHasFixedSize(false);
+            myDownloadRV.setLayoutManager(new GridLayoutManager(rootView.getContext(), 2));
+            myDownloadRV.setItemAnimator(new DefaultItemAnimator());
+
+            adapter = new MyDownloadsRecyclerViewAdapter(MainActivity.myDownloads, rootView.getContext());
+
+            myDownloadRV.setAdapter(adapter);
 
             return rootView;
+        }
+
+        private void callTakePhotoActivity(Context context){
+            Intent intent = new Intent(context, TakePhoto.class);
+            startActivity(intent);
+        }
+
+        private void callFileBrowserActivity(Context context){
+            Intent intent = new Intent(context, FileBrowser.class);
+            startActivity(intent);
         }
 
     }
