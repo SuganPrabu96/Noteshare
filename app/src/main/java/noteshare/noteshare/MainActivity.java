@@ -69,6 +69,12 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().hide();
 
         myDownloads = new ArrayList<>();
+        myDownloads.add(new MyDownloadsItemsClass(5, 5)); //TODO Sample data
+        myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
+        myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
+        myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
+        myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
+        myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
         myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
         myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
 

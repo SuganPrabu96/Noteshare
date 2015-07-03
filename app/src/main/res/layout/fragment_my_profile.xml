@@ -266,7 +266,7 @@
             android:layout_width="40dp"
             android:layout_height="34dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/filter_icon_ash"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"/>
@@ -315,7 +315,7 @@
                 android:layout_width="40dp"
                 android:layout_height="34dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher"
+                android:src="@drawable/filter_icon_ash"
                 android:layout_marginLeft="5dp"
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="center"/>
