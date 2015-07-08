@@ -74,23 +74,19 @@
 
     </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_downloads_recyclerview"
-            android:paddingTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:scrollbarAlwaysDrawVerticalTrack="false"/>
-
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom">
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/my_downloads_recyclerview"
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    android:clipToPadding="false"
+                    android:paddingBottom="150dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"/>
 
         <include
             layout="@layout/footer_main_2"
@@ -100,7 +96,5 @@
             android:layout_height="wrap_content"/>
 
             </RelativeLayout>
-
-            </LinearLayout>
 
 </LinearLayout>
