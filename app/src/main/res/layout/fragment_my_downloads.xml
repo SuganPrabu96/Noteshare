@@ -85,7 +85,7 @@
                     android:layout_height="match_parent"
                     android:scrollbars="vertical"
                     android:clipToPadding="false"
-                    android:paddingBottom="150dp"
+                    android:paddingBottom="120dp"
                     android:scrollbarAlwaysDrawVerticalTrack="false"/>
 
         <include

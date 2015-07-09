@@ -52,25 +52,60 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#2E9BA0"
-        android:paddingBottom="15dp"
-        android:paddingTop="10dp"
-        android:weightSum="8">
+        android:weightSum="2">
 
-        <include
-            layout="@layout/search_layout"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="3"/>
+            android:gravity="center">
 
-        <include
-            layout="@layout/sort_layout"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                android:text="Filter"
+                android:layout_marginLeft="20dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#fff"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="5"/>
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                android:text="Sort by"
+                android:layout_marginLeft="20dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -85,7 +120,7 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:clipToPadding="false"
-            android:paddingBottom="150dp"
+            android:paddingBottom="120dp"
             android:scrollbarAlwaysDrawVerticalTrack="false"/>
 
         <include
