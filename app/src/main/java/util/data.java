@@ -11,7 +11,8 @@ public class data {
             new NavDrawerItem("My Profile", R.drawable.ic_launcher),
             new NavDrawerItem("My Uploads", R.drawable.ic_launcher),
             new NavDrawerItem("My Downloads", R.drawable.ic_launcher),
-            new NavDrawerItem("Logout", R.drawable.ic_launcher),
+            new NavDrawerItem("Search", R.drawable.ic_launcher),
+            new NavDrawerItem("Logout", R.drawable.ic_launcher)
     };
     public static List<NavDrawerItem> getNavDrawerItems(){
         return Arrays.asList(navtitles);

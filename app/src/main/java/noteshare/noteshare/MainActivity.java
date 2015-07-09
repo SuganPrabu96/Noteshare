@@ -36,8 +36,12 @@ import java.util.List;
 
 import MyDownloads.MyDownloadsItemsClass;
 import MyDownloads.MyDownloadsRecyclerViewAdapter;
+import MyUploads.MyUploadsItemsClass;
+import MyUploads.MyUploadsRecyclerViewAdapter;
 import NavigationDrawer.NavDrawerItem;
 import NavigationDrawer.NavDrawerListAdapter;
+import Search.SearchItemsClass;
+import Search.SearchRecyclerViewAdapter;
 import de.hdodenhof.circleimageview.CircleImageView;
 import util.data;
 
@@ -56,6 +60,8 @@ public class MainActivity extends ActionBarActivity {
     private NavDrawerListAdapter navDrawerListAdapter;
     private String modeOfLogin = "App"; //TODO edit this
     public static ArrayList<MyDownloadsItemsClass> myDownloads;
+    public static ArrayList<MyUploadsItemsClass> myUploads;
+    public static ArrayList<SearchItemsClass> searchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,28 @@ public class MainActivity extends ActionBarActivity {
         myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
         myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
         myDownloads.add(new MyDownloadsItemsClass(5,5)); //TODO Sample data
+
+        myUploads = new ArrayList<>();
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+        myUploads.add(new MyUploadsItemsClass(5, 5)); //TODO Sample data
+
+        searchList = new ArrayList<>();
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+        searchList.add(new SearchItemsClass(5, 5)); //TODO Sample data
+
+
 
         facebookProfileIcon = (ProfilePictureView) findViewById(R.id.profilepic_facebook);
         profileIconText = (TextView) findViewById(R.id.profilepic_name);
@@ -179,6 +207,8 @@ public class MainActivity extends ActionBarActivity {
         } else if (position == 2) {
             fragmentTransaction.replace(R.id.frame_container, new MyDownloadsFragment(), "MyDownloadsFragment");
         } else if (position == 3) {
+            fragmentTransaction.replace(R.id.frame_container, new SearchFragment(), "SearchFragment");
+        } else if (position == 4) {
             final AlertDialog.Builder logoutAlert = new AlertDialog.Builder(MainActivity.this);
 
             logoutAlert.setCancelable(false);
@@ -321,14 +351,84 @@ public class MainActivity extends ActionBarActivity {
         public MyUploadsFragment() {
         }
 
+        private TextView searchNotesTV, takePicTV, uploadFileTV;
+        private ImageView drawerIV, cameraIV, uploadFileIV;
+        private RecyclerView myUploadRV;
+        private MyUploadsRecyclerViewAdapter adapter;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_my_uploads, container, false);
 
+            drawerIV = (ImageView) rootView.findViewById(R.id.ic_drawer);
+            cameraIV = (ImageView) rootView.findViewById(R.id.main_footer_camera);
+            uploadFileIV = (ImageView) rootView.findViewById(R.id.main_footer_upload);
+            searchNotesTV = (TextView) rootView.findViewById(R.id.search_layout_text);
+            takePicTV = (TextView) rootView.findViewById(R.id.main_footer_take_pic);
+            uploadFileTV = (TextView) rootView.findViewById(R.id.main_footer_upload_existing);
+
+            searchNotesTV.setText("Search notes");
+
+            takePicTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            uploadFileTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+            drawerIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.openDrawer();
+                    Log.d("Clicked", "True");
+                }
+            });
+
+            takePicTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            cameraIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
+            myUploadRV = (RecyclerView) rootView.findViewById(R.id.my_uploads_recyclerview);
+            myUploadRV.setHasFixedSize(false);
+            myUploadRV.setLayoutManager(new GridLayoutManager(rootView.getContext(), 2));
+            myUploadRV.setItemAnimator(new DefaultItemAnimator());
+
+            adapter = new MyUploadsRecyclerViewAdapter(MainActivity.myUploads, rootView.getContext());
+
+            myUploadRV.setAdapter(adapter);
 
             return rootView;
+        }
+
+        private void callTakePhotoActivity(Context context){
+            Intent intent = new Intent(context, TakePhoto.class);
+            startActivity(intent);
+        }
+
+        private void callFileBrowserActivity(Context context){
+            Intent intent = new Intent(context, FileBrowser.class);
+            startActivity(intent);
         }
 
     }
@@ -419,5 +519,93 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
+
+    public static class SearchFragment extends Fragment {
+
+        public SearchFragment() {
+        }
+
+        private TextView searchNotesTV, takePicTV, uploadFileTV;
+        private ImageView drawerIV, cameraIV, uploadFileIV;
+        private RecyclerView searchRV;
+        private SearchRecyclerViewAdapter adapter;
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            final View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+
+            drawerIV = (ImageView) rootView.findViewById(R.id.ic_drawer);
+            cameraIV = (ImageView) rootView.findViewById(R.id.main_footer_camera);
+            uploadFileIV = (ImageView) rootView.findViewById(R.id.main_footer_upload);
+            searchNotesTV = (TextView) rootView.findViewById(R.id.search_layout_text);
+            takePicTV = (TextView) rootView.findViewById(R.id.main_footer_take_pic);
+            uploadFileTV = (TextView) rootView.findViewById(R.id.main_footer_upload_existing);
+
+            searchNotesTV.setText("Search notes");
+
+            takePicTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            uploadFileTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+            drawerIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.openDrawer();
+                    Log.d("Clicked", "True");
+                }
+            });
+
+            takePicTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            cameraIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callTakePhotoActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
+            uploadFileIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callFileBrowserActivity(rootView.getContext());
+                }
+            });
+
+            searchRV = (RecyclerView) rootView.findViewById(R.id.search_recyclerview);
+            searchRV.setHasFixedSize(false);
+            searchRV.setLayoutManager(new GridLayoutManager(rootView.getContext(), 2));
+            searchRV.setItemAnimator(new DefaultItemAnimator());
+
+            adapter = new SearchRecyclerViewAdapter(MainActivity.searchList, rootView.getContext());
+
+            searchRV.setAdapter(adapter);
+
+            return rootView;
+        }
+
+        private void callTakePhotoActivity(Context context){
+            Intent intent = new Intent(context, TakePhoto.class);
+            startActivity(intent);
+        }
+
+        private void callFileBrowserActivity(Context context){
+            Intent intent = new Intent(context, FileBrowser.class);
+            startActivity(intent);
+        }
+
+    }
+
 
 }
